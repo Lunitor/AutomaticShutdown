@@ -1,5 +1,4 @@
 ﻿using Lunitor.AutomaticShutdown.Jellyfin;
-using System;
 using System.Threading.Tasks;
 
 namespace Lunitor.AutomaticShutdown
@@ -13,9 +12,8 @@ namespace Lunitor.AutomaticShutdown
             var sessionChecker = new JellyfinSessionChecker();
             await sessionChecker.ReCheckTillNoActiveSessionsAsync();
 
-            Console.WriteLine($"Shutting down in {Configuration.ShutdownDelayInMin} min");
             var handler = new CommandHandler();
-            handler.SendShutdownCommand();
+            handler.HandleCommand(Configuration.CommandType);
         }
     }
 }
