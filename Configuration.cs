@@ -14,6 +14,7 @@ namespace Lunitor.AutomaticShutdown
                 .Build();
         }
 
+        public static CommandType CommandType => _configuration.GetValue<CommandType>("CommandType");
         public static int ReCheckIntervalInMin => _configuration.GetValue<int>("ReCheckIntervalInMin");
         public static int ShutdownDelayInMin => _configuration.GetValue<int>("ShutdownDelayInMin");
         public static string JellyfinUrl => _configuration.GetValue<string>("Jellyfin:Url");
